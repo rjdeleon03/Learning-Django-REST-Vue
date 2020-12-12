@@ -7,7 +7,7 @@
 </head>
 <body>
     {% for object in object_list %}
-        <p>Product: {{ object.name }}</p>
+        <p>Product: <a href="{% url 'products:product-detail' object.id%}">{{ object.name }}</a></p>
         <p>Manufacturer: {{ object.manufacturer }}</p>
         <p>Price: {{ object.price }}</p>
     {% endfor %}
