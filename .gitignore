@@ -1,1 +1,4 @@
 *.sqlite3
+02-WEB-APIs/First_API_Django/onlinestore/onlinestore/__pycache__
+02-WEB-APIs/First_API_Django/onlinestore/products/__pycache__
+02-WEB-APIs/First_API_Django/onlinestore/products/migrations/__pycache__

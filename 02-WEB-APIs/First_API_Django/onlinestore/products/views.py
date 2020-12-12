@@ -33,6 +33,37 @@ def product_detail(request, pk):
 
     return response
 
+
+def manufacturer_list(request):
+    manufacturers = Manufacturer.objects.all()
+    data = {"manufacturers": [m for m in
+                              list(manufacturers.values()) if m["active"] == True]}
+    response = JsonResponse(data)
+    return response
+
+
+def manufacturer_detail(request, pk):
+    try:
+        manufacturer = Manufacturer.objects.get(pk=pk)
+        products = manufacturer.products.values()
+        data = {"manufacturer": {
+            "name": manufacturer.name,
+            "location": manufacturer.location,
+            "active": manufacturer.active,
+            "products": list(products.values())
+        }}
+        response = JsonResponse(data)
+    except:
+        response = JsonResponse({
+            "error": {
+                "code": 404,
+                "message": "Manufacturer not found!"
+            }
+        }, status=404)
+
+    return response
+
+
 # Create your views here.
 # from django.views.generic.detail import DetailView
 # from django.views.generic.list import ListView
